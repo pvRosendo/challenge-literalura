@@ -1,8 +1,11 @@
 package com.rosendo.challengeliteralura.models;
 
+import java.util.Scanner;
+
 public class ApiBooksMenu {
 
     private Integer exitVariable = -1;
+    private Scanner leitura = new Scanner(System.in);
 
     private final String mainText =  """
                             -----------------------------------------------
@@ -21,7 +24,37 @@ public class ApiBooksMenu {
     public void showMainText(){
         while (exitVariable != 0) {
             System.out.println(mainText);
+
+            switch (leitura.nextLine()){
+                case "1":
+                    System.out.println("option 1");
+                break;
+
+                case "2":
+                    System.out.println("option 2");
+                break;
+
+                case "3":
+                    System.out.println("option 3");
+                break;
+
+                case "4":
+                    System.out.println("option 4");
+                break;
+
+                case "5":
+                    System.out.println("option 5");
+                break;
+
+                default:
+                    System.out.println("Invalid option!");
+                break;
+            }
         }
+    }
+
+    public void runApp(){
+        showMainText();
     }
 
 }

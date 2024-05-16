@@ -8,16 +8,16 @@ import java.net.http.HttpResponse;
 
 public class ApiBooksController {
 
-    private static final URI LINK_API_CONVERTER = URI.create("https://gutendex.com/books/");
+    private static final String LINK_API_CONVERTER = "https://gutendex.com/books/";
 
     HttpClient client;
 
-    public String consumeApi() {
+    public String consumeApi(URI uri) {
 
         client = HttpClient.newHttpClient();
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(LINK_API_CONVERTER)
+                .uri(URI.create(LINK_API_CONVERTER + uri))
                 .build();
 
         HttpResponse<String> response = null;
@@ -30,7 +30,7 @@ public class ApiBooksController {
             throw new RuntimeException(e);
 
         }
-
+        System.out.println(response.body());
         return response.body();
     }
 
