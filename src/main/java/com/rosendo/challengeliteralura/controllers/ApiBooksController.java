@@ -12,7 +12,7 @@ public class ApiBooksController {
 
     HttpClient client;
 
-    public void consumeApi(String uri) {
+    public String consumeApi(String uri) {
 
         client = HttpClient.newHttpClient();
 
@@ -30,7 +30,7 @@ public class ApiBooksController {
             throw new RuntimeException(e);
 
         }
-        System.out.println(response.body());
+        return response.body();
     }
 
 }

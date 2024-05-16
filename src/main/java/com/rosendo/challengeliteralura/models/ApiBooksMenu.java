@@ -1,5 +1,6 @@
 package com.rosendo.challengeliteralura.models;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.rosendo.challengeliteralura.services.ApiBooksServices;
 
 import java.util.Scanner;
@@ -7,7 +8,7 @@ import java.util.Scanner;
 public class ApiBooksMenu {
 
     private Integer exitVariable = -1;
-    private final Scanner lecture = new Scanner(System.in);
+    private final Scanner reading = new Scanner(System.in);
 
     private final String mainText =  """
                             -----------------------------------------------
@@ -23,13 +24,13 @@ public class ApiBooksMenu {
                             
                             """;
 
-    public void runApp(){
+    public void runApp() throws JsonProcessingException {
         ApiBooksServices services = new ApiBooksServices();
 
         while (exitVariable != 0) {
             System.out.println(mainText);
 
-            switch (lecture.nextLine()){
+            switch (reading.nextLine()){
                 case "1":
                     services.searchBookByTitle();
                 break;
