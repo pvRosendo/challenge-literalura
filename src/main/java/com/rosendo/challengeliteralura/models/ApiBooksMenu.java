@@ -1,11 +1,13 @@
 package com.rosendo.challengeliteralura.models;
 
+import com.rosendo.challengeliteralura.services.ApiBooksServices;
+
 import java.util.Scanner;
 
 public class ApiBooksMenu {
 
     private Integer exitVariable = -1;
-    private Scanner leitura = new Scanner(System.in);
+    private final Scanner lecture = new Scanner(System.in);
 
     private final String mainText =  """
                             -----------------------------------------------
@@ -22,12 +24,14 @@ public class ApiBooksMenu {
                             """;
 
     public void showMainText(){
+        ApiBooksServices services = new ApiBooksServices();
+
         while (exitVariable != 0) {
             System.out.println(mainText);
 
-            switch (leitura.nextLine()){
+            switch (lecture.nextLine()){
                 case "1":
-                    System.out.println("option 1");
+                    services.searchBookByTitle();
                 break;
 
                 case "2":
