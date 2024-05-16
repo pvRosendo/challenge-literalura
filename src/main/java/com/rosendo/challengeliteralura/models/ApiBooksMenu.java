@@ -11,19 +11,19 @@ public class ApiBooksMenu {
 
     private final String mainText =  """
                             -----------------------------------------------
-                            Escola sua opção desejada
+                            Choose your desired option
                             -----------------------------------------------
                             
-                            1 - buscar livro pelo titulo
-                            2 - listar livros registrados
-                            3 - listar autores registrados
-                            4 - listar autores vivos em um determinado ano
-                            5 - listar livros em determinado idioma
+                            1 - Search for book by title;
+                            2 - List registered books;
+                            3 - List registered authors;
+                            4 - List living authors in a given year;
+                            5 - List books in a given language;
                             0 - quit
                             
                             """;
 
-    public void showMainText(){
+    public void runApp(){
         ApiBooksServices services = new ApiBooksServices();
 
         while (exitVariable != 0) {
@@ -50,15 +50,15 @@ public class ApiBooksMenu {
                     System.out.println("option 5");
                 break;
 
+                case "0":
+                    exitVariable = 0;
+                break;
+
                 default:
                     System.out.println("Invalid option!");
                 break;
             }
         }
-    }
-
-    public void runApp(){
-        showMainText();
     }
 
 }

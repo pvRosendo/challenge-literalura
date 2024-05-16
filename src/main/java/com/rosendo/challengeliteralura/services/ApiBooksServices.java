@@ -2,7 +2,6 @@ package com.rosendo.challengeliteralura.services;
 
 import com.rosendo.challengeliteralura.controllers.ApiBooksController;
 
-import java.net.URI;
 import java.util.Scanner;
 
 public class ApiBooksServices {
