@@ -3,8 +3,11 @@ package com.rosendo.challengeliteralura.services;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rosendo.challengeliteralura.controllers.ApiBooksController;
+import com.rosendo.challengeliteralura.models.ApiBooksMenu;
+import com.rosendo.challengeliteralura.models.BooksAuthorsModel;
 import com.rosendo.challengeliteralura.models.BooksData;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,18 +28,25 @@ public class ApiBooksServices {
 
     public void receiveData(String json) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
+        ApiBooksMenu texts = new ApiBooksMenu();
+
         BooksData bookData = mapper.readValue(json, BooksData.class);
 
         if (bookData.getResults() != null && !bookData.getResults().isEmpty()) {
             String title = bookData.getResults().get(0).getTitle();
-            List<Object> authors = bookData.getResults().get(0).getAuthors();
+            List<BooksAuthorsModel> authors = bookData.getResults().get(0).getAuthors();
+            String firstAuthor = "";
             List<String> languages = bookData.getResults().get(0).getLanguages();
             Long downloads = bookData.getResults().get(0).getDownloadCount();
 
-            System.out.println("Title: " + title);
-            System.out.println("authors: " + authors);
-            System.out.println("languages: " + languages);
-            System.out.println("downloads: " + downloads);
+            if (authors != null && !authors.isEmpty() && authors.get(0).getName() != null) {
+                String[] authorParts = authors.get(0).getName().split(",");
+                if (authorParts.length > 0) {
+                    firstAuthor = authorParts[0].trim();
+                }
+            }
+
+            texts.responseInfo(title, firstAuthor, languages.get(0), downloads);
         } else {
             System.out.println("No info data found.");
         }

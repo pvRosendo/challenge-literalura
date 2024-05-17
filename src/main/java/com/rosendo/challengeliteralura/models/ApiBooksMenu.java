@@ -3,6 +3,8 @@ package com.rosendo.challengeliteralura.models;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.rosendo.challengeliteralura.services.ApiBooksServices;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class ApiBooksMenu {
@@ -24,6 +26,20 @@ public class ApiBooksMenu {
                             
                             """;
 
+    public void responseInfo(String title, Object authors, String languages, Long downloads) {
+        System.out.println(
+                "\n========================= " +
+                        "Informations of " + title +
+                " ========================="
+        );
+
+        System.out.println("Title: " + title);
+        System.out.println("authors: " + authors);
+        System.out.println("languages: " + languages);
+        System.out.println("downloads: " + downloads);
+
+        System.out.println("=====================================");
+    }
     public void runApp() throws JsonProcessingException {
         ApiBooksServices services = new ApiBooksServices();
 

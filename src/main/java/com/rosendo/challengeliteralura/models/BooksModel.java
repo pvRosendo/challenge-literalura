@@ -13,11 +13,12 @@ public class BooksModel {
         @JsonProperty("title")
         private String title;
         @JsonProperty("authors")
-        private List<Object> authors;
+        private List<BooksAuthorsModel> authors;
         @JsonProperty("languages")
         private List<String> languages;
         @JsonProperty("download_count")
         private Long downloadCount;
+
 
         public int getId() {
                 return id;
@@ -35,11 +36,11 @@ public class BooksModel {
                 this.title = title;
         }
 
-        public List<Object> getAuthors() {
+        public List<BooksAuthorsModel> getAuthors() {
                 return authors;
         }
 
-        public void setAuthors(List<Object> authors) {
+        public void setAuthors(List<BooksAuthorsModel> authors) {
                 this.authors = authors;
         }
 
