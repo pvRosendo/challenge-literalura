@@ -1,6 +1,6 @@
 package com.rosendo.challengeliteralura;
 
-import com.rosendo.challengeliteralura.models.ApiBooksMenu;
+import com.rosendo.challengeliteralura.services.ApiBooksMenu;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

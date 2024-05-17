@@ -1,10 +1,7 @@
-package com.rosendo.challengeliteralura.models;
+package com.rosendo.challengeliteralura.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.rosendo.challengeliteralura.services.ApiBooksServices;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class ApiBooksMenu {
