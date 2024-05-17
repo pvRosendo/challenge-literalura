@@ -3,11 +3,10 @@ package com.rosendo.challengeliteralura.services;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rosendo.challengeliteralura.controllers.ApiBooksController;
+import com.rosendo.challengeliteralura.dtos.BooksAuthorsDto;
+import com.rosendo.challengeliteralura.dtos.BooksDataDto;
 import com.rosendo.challengeliteralura.models.ApiBooksMenu;
-import com.rosendo.challengeliteralura.models.BooksAuthorsModel;
-import com.rosendo.challengeliteralura.models.BooksData;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,17 +29,17 @@ public class ApiBooksServices {
         ObjectMapper mapper = new ObjectMapper();
         ApiBooksMenu texts = new ApiBooksMenu();
 
-        BooksData bookData = mapper.readValue(json, BooksData.class);
+        BooksDataDto bookData = mapper.readValue(json, BooksDataDto.class);
 
-        if (bookData.getResults() != null && !bookData.getResults().isEmpty()) {
-            String title = bookData.getResults().get(0).getTitle();
-            List<BooksAuthorsModel> authors = bookData.getResults().get(0).getAuthors();
+        if (bookData.results() != null && !bookData.results().isEmpty()) {
+            String title = bookData.results().get(0).title();
+            List<BooksAuthorsDto> authors = bookData.results().get(0).authors();
             String firstAuthor = "";
-            List<String> languages = bookData.getResults().get(0).getLanguages();
-            Long downloads = bookData.getResults().get(0).getDownloadCount();
+            List<String> languages = bookData.results().get(0).languages();
+            Long downloads = bookData.results().get(0).downloadCount();
 
-            if (authors != null && !authors.isEmpty() && authors.get(0).getName() != null) {
-                String[] authorParts = authors.get(0).getName().split(",");
+            if (authors != null && !authors.isEmpty() && authors.get(0).name() != null) {
+                String[] authorParts = authors.get(0).name().split(",");
                 if (authorParts.length > 0) {
                     firstAuthor = authorParts[0].trim();
                 }
