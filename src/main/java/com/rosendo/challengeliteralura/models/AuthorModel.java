@@ -2,6 +2,9 @@ package com.rosendo.challengeliteralura.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+import java.util.Objects;
+
 @Entity
 @Table(name="tb_authors")
 public class AuthorModel {
@@ -10,33 +13,30 @@ public class AuthorModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    String birthYear;
-    String deathYear;
+    private String name;
+    private String birthYear;
+    private String deathYear;
 
-    @ManyToOne
-    private BooksModel book;
+    @OneToMany(mappedBy = "author")
+    private List<BooksModel> books;
 
-    public Long getId() {
-        return id;
-    }
+    public AuthorModel() {}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getBirthYear() {
-        return birthYear;
-    }
-
-    public void setBirthYear(String birthYear) {
+    public AuthorModel(String name, String birthYear, String deathYear, List<BooksModel> books) {
+        this.name = name;
         this.birthYear = birthYear;
-    }
-
-    public String getDeathYear() {
-        return deathYear;
-    }
-
-    public void setDeathYear(String deathYear) {
         this.deathYear = deathYear;
+        this.books = books;
+    }
+
+
+    @Override
+    public String toString() {
+        return "AuthorModel{" +
+                "name='" + name + '\'' +
+                ", birthYear='" + birthYear + '\'' +
+                ", deathYear='" + deathYear + '\'' +
+                ", books=" + books +
+                '}';
     }
 }
