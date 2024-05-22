@@ -105,19 +105,19 @@ public class ApiBooksServices {
                     break;
 
                 case "2":
-                    System.out.println("option 2");
+                    getAllBooks();
                     break;
 
                 case "3":
-                    System.out.println("option 3");
+                    getAllAuthors();
                     break;
 
                 case "4":
-                    System.out.println("option 4");
+                    getAuthorsLivingByYear(reading.nextLine());
                     break;
 
                 case "5":
-                    System.out.println("option 5");
+                    getBooksByLanguage(reading.nextLine());
                     break;
 
                 case "0":
@@ -145,4 +145,38 @@ public class ApiBooksServices {
 
         System.out.println("=====================================");
     }
+
+    public void getAllBooks() {
+        List<BooksModel> listOfBooks = booksRepository.findAll();
+
+        for (BooksModel book : listOfBooks) {
+            System.out.println(book.getTitle());
+        }
+
+    }
+
+    public void getAllAuthors(){
+        List<AuthorModel> listOfAuthors = authorRepository.findAll();
+
+        for (AuthorModel author : listOfAuthors) {
+            System.out.println(author.getName());
+        }
+    }
+
+    public void getAuthorsLivingByYear(String deathYear){
+        List<AuthorModel> listOfAuthors = authorRepository.findByDeathYearLessThan(deathYear);
+
+        for (AuthorModel author : listOfAuthors) {
+            System.out.println(author.getName());
+        }
+    }
+
+    public void getBooksByLanguage(String language){
+        List<BooksModel> listOfBooks = booksRepository.findBooksByLanguage(language);
+
+        for (BooksModel book : listOfBooks) {
+            System.out.println(book.getTitle());
+        }
+    }
+
 }

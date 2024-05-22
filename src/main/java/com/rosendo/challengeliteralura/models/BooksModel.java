@@ -24,15 +24,35 @@ public class BooksModel {
 
     public BooksModel() {}
 
-
-    @Override
-    public String toString() {
-        return "BooksModel{" +
-                "title='" + title + '\'' +
-                ", author=" + author +
-                ", language='" + language + '\'' +
-                ", downloads=" + downloads +
-                '}';
+    public String getTitle() {
+        return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public AuthorModel getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(AuthorModel author) {
+        this.author = author;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public Long getDownloads() {
+        return downloads;
+    }
+
+    public void setDownloads(Long downloads) {
+        this.downloads = downloads;
+    }
 }

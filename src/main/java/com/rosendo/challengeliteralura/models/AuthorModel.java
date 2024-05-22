@@ -17,7 +17,7 @@ public class AuthorModel {
     private String birthYear;
     private String deathYear;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<BooksModel> books;
 
     public AuthorModel() {}
@@ -30,13 +30,35 @@ public class AuthorModel {
     }
 
 
-    @Override
-    public String toString() {
-        return "AuthorModel{" +
-                "name='" + name + '\'' +
-                ", birthYear='" + birthYear + '\'' +
-                ", deathYear='" + deathYear + '\'' +
-                ", books=" + books +
-                '}';
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBirthYear() {
+        return birthYear;
+    }
+
+    public void setBirthYear(String birthYear) {
+        this.birthYear = birthYear;
+    }
+
+    public String getDeathYear() {
+        return deathYear;
+    }
+
+    public void setDeathYear(String deathYear) {
+        this.deathYear = deathYear;
+    }
+
+    public List<BooksModel> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<BooksModel> books) {
+        this.books = books;
     }
 }
